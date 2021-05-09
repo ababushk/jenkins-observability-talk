@@ -1,0 +1,18 @@
+jobs:
+  - script: >
+      pipelineJob('just_a_pipeline') {
+        definition {
+          cps {
+            script('''\
+              stage('stage_one') {
+                 sleep 10
+                 echo 'Hello one'
+              }
+
+              stage('stage_two') {
+                 sleep 20
+                 echo 'Hello two'
+              }'''.stripIndent())
+          }
+        }
+      }
