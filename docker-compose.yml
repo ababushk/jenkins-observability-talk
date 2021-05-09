@@ -1,5 +1,5 @@
 ---
-version: '3'
+version: '3.2'
 
 networks:
   jenkins:
@@ -11,6 +11,32 @@ volumes:
   filebeat_data: {}
 
 services:
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:7.5.5
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana.ini:/etc/grafana/grafana.ini
+      - ./grafana/data:/var/lib/grafana
+  
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v2.26.0
+    ports:
+      - 9090:9090
+    networks:
+      - jenkins
+    volumes:
+      #- ./prometheus:/etc/prometheus
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      # - type: bind
+      #   source: ./prometheus/prometheus.yml
+      #   target: /etc/prometheus/prometheus.yml
+      #- ./prometheus/data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'    
+
   influxdb:
     image: influxdb:1.7.9
     container_name: influxdb
@@ -27,9 +53,8 @@ services:
       # sudo mkdir -p /srv/docker/influxdb/data
       - ./influxdb_data:/var/lib/influxdb
 
-  jenkins:
-    container_name:
-      jenkins
+  jenkins:    
+    container_name: jenkins
     build:
       context: .
       dockerfile: Dockerfile
