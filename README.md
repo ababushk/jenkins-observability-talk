@@ -1,6 +1,7 @@
 # jenkins-observability-talk
 
-# Components
+## Components
+
 1. Grafana
 2. Prometheus
 3. Zipkin - display traces from OpenTelemetry collector
