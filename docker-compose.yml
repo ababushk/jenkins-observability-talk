@@ -16,9 +16,12 @@ services:
     image: grafana/grafana:7.5.5
     ports:
       - 3000:3000
+    networks:
+      - jenkins
     volumes:
       - ./grafana.ini:/etc/grafana/grafana.ini
       - ./grafana/data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
   
   prometheus:
     container_name: prometheus

@@ -1,5 +1,5 @@
 builds
 custom_logs
 influxdb_data
-grafana
+grafana/data
 prometheus
