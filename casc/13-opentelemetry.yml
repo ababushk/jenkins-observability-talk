@@ -1,0 +1,19 @@
+unclassified:
+  openTelemetry:
+    authentication: "noAuthentication"
+    endpoint: "opentelemetry-collector:4317"
+    exporterIntervalMillis: 60000
+    exporterTimeoutMillis: 30000
+    ignoredSteps: "dir,echo,isUnix,pwd,properties"
+    observabilityBackends:
+      # - elastic:
+      #     kibanaBaseUrl: "http://localhost:5601"
+      # - jaeger:
+      #     jaegerBaseUrl: "http://localhost:16686"
+      # - customObservabilityBackend:
+      #     metricsVisualisationUrlTemplate: "foo"
+      #     traceVisualisationUrlTemplate: "http://example.com"
+      - zipkin:
+          zipkinBaseUrl: "http://localhost:9411/" # I believe it is only to put link on build info page
+    # serviceName: "jenkins"
+    # serviceNamespace: "jenkins"

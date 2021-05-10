@@ -1,10 +1,11 @@
 audit-trail:3.8
-configuration-as-code:1.50
+configuration-as-code:1.51
 github-autostatus:3.6.2
 influxdb:2.3
 job-dsl:1.77
 logstash:2.3.2
 modernstatus:1.3
+opentelemetry:0.9
 prometheus:2.0.10
 rebuild:1.31
 timestamper:1.11.3
