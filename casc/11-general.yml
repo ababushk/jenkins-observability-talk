@@ -1,13 +1,5 @@
 jenkins:
-  globalNodeProperties:
-  - envVars:
-      env:
-      - key: "MYVAR"
-        value: "MYVALUE"
-  labelString: "master"
-  mode: NORMAL
-  myViewsTabBar: "standard"
-  numExecutors: 0
+  numExecutors: 4
 
 unclassified:
   timestamperConfig:
