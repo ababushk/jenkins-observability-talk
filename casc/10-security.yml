@@ -9,10 +9,10 @@ jenkins:
   remotingSecurity:
     enabled: true
   slaveAgentPort: 50000
-  # securityRealm:
-  #   local:
-  #     allowsSignup: false
-  #     users:
-  #       - id: "admin"
-  #         password: "admin" # good enough for localhost :D
-  #authorizationStrategy: loggedInUsersCanDoAnything
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "ababushk"
+          password: "admin" # good enough for localhost :D
+  authorizationStrategy: loggedInUsersCanDoAnything
