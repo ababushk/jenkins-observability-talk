@@ -1,6 +1,6 @@
 jobs:
   - script: >
-      pipelineJob('just_a_pipeline') {
+      pipelineJob('two_stage_pipeline') {
         definition {
           cps {
             script('''\
@@ -13,6 +13,54 @@ jobs:
                  sleep 20
                  echo 'Hello two'
               }'''.stripIndent())
+          }
+        }
+      }
+
+  - script: >
+      pipelineJob('long_second_stage_pipeline') {
+        definition {
+          cps {
+            script('''\
+              stage('short_stage') {
+                 sleep 10
+                 echo 'Hello one'
+              }
+
+              stage('long_stage') {
+                 sleep 300
+                 echo 'Hello two'
+              }'''.stripIndent())
+          }
+        }
+      }
+
+  - script: >
+      pipelineJob('cd_pipeline_emulation') {
+        definition {
+          cps {
+            script('''\
+              stage('checkout') {
+                node('master') {
+                  sh 'echo "checkout" && sleep 3'
+                }
+              }
+              stage('build') {
+                node('master') {
+                  sh 'echo "build" && sleep 30'
+                }
+              }
+              stage('test') {
+                node('master') {
+                  sh 'echo "test" && sleep 10'
+                }
+              }                           
+              stage('deploy') {
+                node('master') {
+                  sh 'echo "deploy" && sleep 20'
+                }
+              }                
+              '''.stripIndent())
           }
         }
       }
