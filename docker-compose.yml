@@ -101,7 +101,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image:
-      ghcr.io/ababushk/jenkins-observability-talk:2.277.3-jdk11
+      ghcr.io/ababushk/jenkins-observability-talk:2.277.4-jdk11
     restart:
       unless-stopped
     ulimits:
