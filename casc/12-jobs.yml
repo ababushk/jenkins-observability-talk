@@ -13,6 +13,7 @@ jobs:
                  sleep 20
                  echo 'Hello two'
               }'''.stripIndent())
+              sandbox()
           }
         }
       }
@@ -31,6 +32,7 @@ jobs:
                  sleep 300
                  echo 'Hello two'
               }'''.stripIndent())
+              sandbox()
           }
         }
       }
@@ -54,13 +56,14 @@ jobs:
                 node('master') {
                   sh 'echo "test" && sleep 10'
                 }
-              }                           
+              }
               stage('deploy') {
                 node('master') {
                   sh 'echo "deploy" && sleep 20'
                 }
-              }                
+              }
               '''.stripIndent())
+              sandbox()
           }
         }
       }
