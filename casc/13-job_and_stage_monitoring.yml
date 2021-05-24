@@ -1,0 +1,13 @@
+unclassified:
+  buildStatusConfig:
+    dbVersion: 2
+    enableGithub: false
+    enableHttp: false
+    enableInfluxDb: true
+    enableStatsd: false
+    httpVerifySSL: false
+    ignoreSendingTestCoverageToInflux: true
+    ignoreSendingTestResultsToInflux: true
+    influxDbDatabase: "autostatus_plugin"
+    influxDbRetentionPolicy: "autogen"
+    influxDbUrl: "http://influxdb:8086"
