@@ -1,7 +1,7 @@
 unclassified:
   influxDbGlobalConfig:
     targets:
-    - database: "influxdb_plugin"
+    - database: "default"
       description: "local_influxdb"
       exposeExceptions: true
       globalListener: true
