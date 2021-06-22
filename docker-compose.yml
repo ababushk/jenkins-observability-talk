@@ -22,7 +22,28 @@ services:
       - ./grafana.ini:/etc/grafana/grafana.ini
       - ./grafana/data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning
-  
+
+  loki:
+    image: grafana/loki:2.2.1
+    container_name: loki
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./loki-config.yml:/etc/loki/local-config.yaml
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - jenkins
+
+  promtail:
+    image: grafana/promtail:2.2.1
+    container_name: promtail
+    volumes:
+      - ./custom_logs:/jenkins_custom_logs:ro
+      - ./promtail-config.yml:/etc/promtail/config.yml
+    command: -config.file=/etc/promtail/config.yml
+    networks:
+      - jenkins
+
   prometheus:
     container_name: prometheus
     image: prom/prometheus:v2.26.0
