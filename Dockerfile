@@ -16,8 +16,8 @@ ENV CASC_JENKINS_CONFIG=/var/jenkins_home/casc
 COPY casc /usr/share/jenkins/ref/casc
 
 # Persistent data
-VOLUME $JENKINS_HOME/builds
-VOLUME $JENKINS_HOME/custom_logs
+VOLUME ${JENKINS_HOME}/builds
+VOLUME ${JENKINS_HOME}/custom_logs
 
 # Setting JAVA_OPTS
 # 1. Skip install wizard. All configuration is done via CasC and groovy scripts
