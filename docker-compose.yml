@@ -36,6 +36,7 @@ services:
     container_name: promtail
     volumes:
       - ./custom_logs:/jenkins_custom_logs:ro
+      - ./audit_trail:/jenkins_audit_trail:ro
       - ./promtail-config.yml:/etc/promtail/config.yml
     command: -config.file=/etc/promtail/config.yml
     networks:
@@ -142,4 +143,5 @@ services:
       # - ./data:/var/jenkins_home:rw # only until I'll create perfect immutable image
       - ./builds:/var/jenkins_home/builds:rw
       - ./custom_logs:/var/jenkins_home/custom_logs:rw
+      - ./audit_trail:/var/jenkins_home/audit_trail:rw
       #- ./secrets:/run/secrets

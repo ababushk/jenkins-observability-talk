@@ -1,0 +1,27 @@
+# Taken from https://grafana.com/docs/loki/v2.2.0/clients/promtail/configuration/#example-static-config
+server:
+  http_listen_port: 9080
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+- job_name: jenkins_custom_logs
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: jenkins_custom_logs
+      __path__: /jenkins_custom_logs/*.log*
+
+- job_name: jenkins_audit_trail
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: jenkins_audit_trail
+      __path__: /jenkins_audit_trail/*.log*
+

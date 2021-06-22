@@ -1,34 +1,38 @@
+/*
+    02-custom-logs.groovy
+    Sends more verbose logs of selected packages to files
+    to make them scrapable by Promtail
+*/
 import java.util.logging.FileHandler
 import java.util.logging.SimpleFormatter
-import java.util.logging.LogManager
+import java.util.logging.Logger
 import java.util.logging.Level
 import jenkins.model.Jenkins
+import io.jenkins.lib.support_log_formatter.SupportLogFormatter
 
 /* put logs from given Java package to a file */
-def setup_custom_logging(String package_name) {
-    def RunLogger = LogManager.getLogManager().getLogger(package_name)
-    def logsDir = new File(Jenkins.instance.rootDir, "custom_logs")
+def setupCustomLogging(String package_name) {
+    def logger = Logger.getLogger(package_name)
+    def logsDir = new File(Jenkins.instance.rootDir, 'custom_logs')
     if(!logsDir.exists()) {
         logsDir.mkdirs()
     }
     FileHandler handler = new FileHandler(logsDir.absolutePath+"/${package_name}-%g.log",
                                           100 * 1024 * 1024, 10, true);
 
-    handler.setFormatter(new SimpleFormatter());
+    println "--> Setting custom logging for ${package_name}..."
+    handler.setFormatter(new SupportLogFormatter());
     handler.setLevel(Level.FINE)
-    RunLogger.addHandler(handler)
-    println "--> custom log for ${package_name} was set"
+    logger.setLevel(Level.FINE)
+    logger.addHandler(handler)
+    println "--> Custom logging for ${package_name} was set"
 }
 
 def packages = [
-    "com.dabsquared.gitlabjenkins",
-    "org.csanchez.jenkins.plugins.kubernetes",
-    "hudson.TcpSlaveAgentListener",
-    "org.kohsuke.github",
-    "org.jenkinsci.plugins.github_branch_source",
-    "org.jenkinsci.plugins.github",
+    'org.jenkinsci.plugins.workflow',
+    'hudson.plugins.audit_trail',
 ]
 
 packages.each { pkg ->
-    setup_custom_logging(pkg)
+    setupCustomLogging(pkg)
 }

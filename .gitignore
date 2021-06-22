@@ -1,5 +1,6 @@
 builds
 custom_logs
+audit_trail
 influxdb_data
 grafana/data
 prometheus
