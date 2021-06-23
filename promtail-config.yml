@@ -16,6 +16,16 @@ scrape_configs:
     labels:
       job: jenkins_custom_logs
       __path__: /jenkins_custom_logs/*.log*
+  pipeline_stages:
+  - multiline:
+      firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}\+\d{4}'
+  - regex:
+      expression: '^(?P<date>\S+?) (?P<time>\S+?) \[id=(?P<thread_id>\S+?)\]\s+(?P<loglevel>\S+?)\s+(?P<class_name>\S+)#(?P<method_name>\S+): (?P<message>.*)'
+  - labels:
+      thread_id:
+      loglevel:
+      class_name:
+      method_name:
 
 - job_name: jenkins_audit_trail
   static_configs:
@@ -24,4 +34,11 @@ scrape_configs:
     labels:
       job: jenkins_audit_trail
       __path__: /jenkins_audit_trail/*.log*
+  pipeline_stages:
+  - regex:
+      expression: '^(?P<date>\w{3} \d{2}, \d{4}) (?P<time>\S+ AM|PM) (?P<endpoint>\S+) by (?P<username>\S+)'
+  - labels:
+      endpoint:
+      username:
+
 
