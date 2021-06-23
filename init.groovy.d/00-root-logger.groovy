@@ -32,3 +32,6 @@ handler.setLevel(Level.INFO)
 println '--> Send Jenkins logs to a file'
 Logger.getLogger('').addHandler(handler)
 Logger.getLogger('').setLevel(Level.INFO)
+
+println '--> Set log levels for packages that write to main log'
+Logger.getLogger('com.cloudbees.simplediskusage').setLevel(Level.WARNING)
