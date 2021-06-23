@@ -1,7 +1,11 @@
 /*
     00-root-logger.groovy
     Makes Jenkins to write its log to a file in addition to usual console output
-    to make them scrapable by Promtail
+    to make them scrapable by Promtail.
+    Note: logs will be available only after this script will be executed, so
+    some messages from before won't appear in resulting file.
+    If you need those messages, you better scrape logs from Jenkins container, but not all
+    of them following easy-parseable pattern
 */
 
 import java.util.logging.FileHandler
