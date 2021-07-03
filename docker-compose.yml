@@ -10,7 +10,7 @@ volumes:
 services:
   grafana:
     container_name: grafana
-    image: grafana/grafana:7.5.5
+    image: grafana/grafana:8.0.4
     ports:
       - 3000:3000
     networks:
