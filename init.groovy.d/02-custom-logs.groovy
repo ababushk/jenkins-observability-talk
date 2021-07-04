@@ -30,7 +30,7 @@ def setupCustomLogging(String package_name) {
 
 def packages = [
     'org.jenkinsci.plugins.workflow',
-    'hudson.plugins.audit_trail',
+    'org.jenkinsci.plugins.githubautostatus',
 ]
 
 packages.each { pkg ->

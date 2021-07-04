@@ -2,4 +2,5 @@ builds
 custom_logs
 audit_trail
 influxdb_data
+influxdb2_data
 grafana/data

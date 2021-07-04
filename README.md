@@ -30,10 +30,7 @@ Run some pipelines and query data from the DB:
 key
 ---
 jenkins_data,build_result=SUCCESS,project_name=cd_pipeline_emulation,project_path=cd_pipeline_emulation
-> show series on autostatus plugin
-ERR: error parsing query: found plugin, expected ; at line 1, char 27
-Warning: It is possible this error is due to not setting a database.
-Please set a database with the command "use <database>".
+
 > show series on autostatus_plugin
 key
 ---

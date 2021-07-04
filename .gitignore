@@ -4,3 +4,4 @@ audit_trail
 influxdb_data
 grafana/data
 prometheus
+influxdb2_data
