@@ -2,7 +2,7 @@ audit-trail:3.8
 cloudbees-disk-usage-simple:0.10
 configuration-as-code:1.51
 github-autostatus:3.6.2
-influxdb:2.3
+influxdb:3.0.1
 job-dsl:1.77
 logstash:2.3.2
 modernstatus:1.3

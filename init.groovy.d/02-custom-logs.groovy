@@ -31,6 +31,8 @@ def setupCustomLogging(String package_name) {
 def packages = [
     'org.jenkinsci.plugins.workflow',
     'org.jenkinsci.plugins.githubautostatus',
+    'jenkinsci.plugins.influxdb',
+    'jenkinsci.plugins.influxdb.InfluxDbPublicationService',
 ]
 
 packages.each { pkg ->

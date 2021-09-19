@@ -6,7 +6,6 @@ unclassified:
       exposeExceptions: true
       globalListener: true
       jobScheduledTimeAsPointsTimestamp: false
-      password: "{AQAAABAAAAAQZXr/fE+FS7d65VgfzX+Krt25IzAKyE8Z5uV3IQorcBQ=}"
       retentionPolicy: "autogen"
       url: "http://influxdb:8086"
       usingJenkinsProxy: false
